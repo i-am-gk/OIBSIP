@@ -1,0 +1,399 @@
+:root {
+  --navy: #071f3a;
+  --navy-soft: #0e345f;
+  --blue: #1769aa;
+  --blue-bright: #2d8ddd;
+  --ice: #e9f4ff;
+  --white: #ffffff;
+  --paper: #f8fbff;
+  --ink: #112033;
+  --muted: #607086;
+  --line: #cddff1;
+  --danger: #b42318;
+  --danger-soft: #fff1f0;
+  --accent: #f1b64b;
+  --shadow: 0 24px 70px rgba(7, 31, 58, 0.18);
+  --radius: 8px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(7, 31, 58, 0.96), rgba(14, 52, 95, 0.94) 44%, rgba(23, 105, 170, 0.9)),
+    var(--navy);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 75%);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 16px;
+  color: var(--white);
+  font-size: 46px;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}
+
+h1 span {
+  display: inline;
+}
+
+h2 {
+  margin-bottom: 12px;
+  color: var(--navy);
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+.page-shell {
+  width: 100%;
+  min-height: calc(100vh - 114px);
+  display: grid;
+  place-items: center;
+  padding: 54px 20px;
+}
+
+.converter {
+  width: 100%;
+  max-width: 980px;
+  min-width: 0;
+  border: 1px solid rgba(205, 223, 241, 0.55);
+  border-radius: var(--radius);
+  padding: 34px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
+    rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.intro {
+  max-width: 760px;
+  min-width: 0;
+  margin-bottom: 26px;
+}
+
+.intro p:last-child {
+  max-width: 680px;
+  margin-bottom: 0;
+  color: #dcecff;
+  font-size: 18px;
+  overflow-wrap: anywhere;
+}
+
+.eyebrow {
+  margin-bottom: 10px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.converter-form,
+.results,
+.formula-panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.converter-form {
+  padding: 24px;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(220px, 0.6fr);
+  gap: 18px;
+}
+
+.field {
+  min-width: 0;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--navy);
+  font-weight: 850;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid #adc7e1;
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  color: var(--ink);
+  background: var(--white);
+}
+
+.field input[aria-invalid="true"] {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.hint {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.error-message {
+  min-height: 28px;
+  margin: 14px 0 0;
+  color: var(--danger);
+  font-weight: 800;
+}
+
+.error-message:empty {
+  display: block;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.button {
+  min-height: 50px;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  font-weight: 900;
+}
+
+.button-primary {
+  color: var(--white);
+  background: var(--blue);
+}
+
+.button-primary:hover {
+  background: var(--blue-bright);
+}
+
+.button-secondary {
+  color: var(--navy);
+  border-color: #9dbbd8;
+  background: var(--white);
+}
+
+.button-secondary:hover {
+  background: var(--ice);
+}
+
+.results {
+  margin-top: 22px;
+  padding: 24px;
+}
+
+.results[hidden] {
+  display: none;
+}
+
+.results-heading {
+  margin-bottom: 18px;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.result-card {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #b7d3ef;
+  border-radius: var(--radius);
+  padding: 18px;
+  background:
+    linear-gradient(145deg, rgba(233, 244, 255, 0.9), rgba(255, 255, 255, 0.98));
+}
+
+.result-label {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.result-card strong {
+  color: var(--navy);
+  font-size: 34px;
+  line-height: 1;
+  overflow-wrap: anywhere;
+}
+
+.result-unit {
+  color: var(--blue);
+  font-weight: 900;
+}
+
+.formula-panel {
+  margin-top: 22px;
+  padding: 24px;
+}
+
+.formula-panel p {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.formula-panel ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.formula-panel li {
+  border-left: 4px solid var(--blue);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  background: var(--white);
+  color: var(--ink);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.footer {
+  padding: 24px 20px 34px;
+  color: #dcecff;
+  text-align: center;
+}
+
+.footer p {
+  margin-bottom: 4px;
+}
+
+.footer p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 760px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  .converter {
+    padding: 22px;
+  }
+
+  .field-grid,
+  .result-grid,
+  .formula-panel ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-shell {
+    padding: 28px 14px;
+  }
+
+  .converter {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h1 span {
+    display: block;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  .intro p:last-child {
+    font-size: 16px;
+  }
+
+  .converter-form,
+  .results,
+  .formula-panel {
+    padding: 18px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

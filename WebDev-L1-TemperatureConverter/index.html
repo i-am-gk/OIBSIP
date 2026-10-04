@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Converter | Oasis Infobyte Task 3</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="converter" aria-labelledby="page-title">
+      <div class="intro">
+        <p class="eyebrow">Temperature Converter</p>
+        <h1 id="page-title"><span>Convert Celsius,</span> <span>Fahrenheit and Kelvin</span></h1>
+        <p>Enter a temperature, choose its unit and view all three converted values with strict validation for absolute zero.</p>
+      </div>
+
+      <form class="converter-form" id="converter-form" novalidate>
+        <div class="field-grid">
+          <div class="field">
+            <label for="temperature-input">Temperature value</label>
+            <input
+              id="temperature-input"
+              name="temperature"
+              type="text"
+              inputmode="decimal"
+              autocomplete="off"
+              placeholder="Example: -40 or 98.6"
+              aria-describedby="input-hint error-message"
+            >
+            <p class="hint" id="input-hint">Positive, negative and decimal numbers are accepted.</p>
+          </div>
+
+          <div class="field">
+            <label for="unit-select">Input unit</label>
+            <select id="unit-select" name="unit">
+              <option value="celsius">Celsius (°C)</option>
+              <option value="fahrenheit">Fahrenheit (°F)</option>
+              <option value="kelvin">Kelvin (K)</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="error-message" id="error-message" role="alert" aria-live="assertive"></p>
+
+        <div class="actions">
+          <button class="button button-primary" type="submit">Convert</button>
+          <button class="button button-secondary" type="button" id="reset-button">Reset</button>
+        </div>
+      </form>
+
+      <section class="results" id="results" aria-labelledby="results-title" aria-live="polite" hidden>
+        <div class="results-heading">
+          <p class="eyebrow">Results</p>
+          <h2 id="results-title">Converted Temperatures</h2>
+        </div>
+        <div class="result-grid">
+          <article class="result-card">
+            <span class="result-label">Celsius</span>
+            <strong id="celsius-result">--</strong>
+            <span class="result-unit">°C</span>
+          </article>
+          <article class="result-card">
+            <span class="result-label">Fahrenheit</span>
+            <strong id="fahrenheit-result">--</strong>
+            <span class="result-unit">°F</span>
+          </article>
+          <article class="result-card">
+            <span class="result-label">Kelvin</span>
+            <strong id="kelvin-result">--</strong>
+            <span class="result-unit">K</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="formula-panel" aria-labelledby="formula-title">
+        <h2 id="formula-title">Conversion Formulas</h2>
+        <p>The converter first changes the selected input into Celsius, then calculates Fahrenheit and Kelvin.</p>
+        <ul>
+          <li>Fahrenheit to Celsius: (F - 32) x 5/9</li>
+          <li>Kelvin to Celsius: K - 273.15</li>
+          <li>Celsius to Fahrenheit: C x 9/5 + 32</li>
+          <li>Celsius to Kelvin: C + 273.15</li>
+        </ul>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Developed by Ghani Abdul Rehman Khan</p>
+    <p>Oasis Infobyte Internship &bull; Level 1 &bull; Task 3</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
